@@ -19,11 +19,15 @@ const App = () => {
     setTasks(tasks.filter((task) => task.id !== id));
     // console.log("deleted", id);
   };
-
   //Toggle Reminder Function:
   const toggleReminder = (id) => {
-    console.log("toggle", id);
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
   };
+  // console.log("toggle", id);
 
   return (
     <div className="container">
