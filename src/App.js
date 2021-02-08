@@ -13,11 +13,21 @@ const App = () => {
       reminder: true,
     },
   ]);
+  //Delete a Task:
+  const deleteTask = (id) => {
+    // We dont want to show the task deleted i.e setting the task to filtered task
+    setTasks(tasks.filter((task) => task.id !== id));
+    // console.log("deleted", id);
+  };
 
   return (
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} />
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} onDelete={deleteTask} />
+      ) : (
+        "No Tasks To Show"
+      )}
     </div>
   );
 };
