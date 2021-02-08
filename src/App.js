@@ -44,7 +44,10 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header onAdd={() => setShowAddTask(!showAddTask)} />
+      <Header
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
       {
         //ShowAddtask is True then show the formelse hide it
         showAddTask && <AddTask onAdd={addTask} />
