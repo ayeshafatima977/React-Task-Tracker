@@ -1,7 +1,10 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 import { useState } from "react";
 const App = () => {
+  //To toggle the form to show and hide
+  const [showAddTask, setShowAddTask] = useState(false);
   //Setting default value of functions as an array of tasks
   const [tasks, setTasks] = useState([
     { id: 1, text: "Learn React", day: "Feb 7 at 5:00pm", reminder: true },
@@ -13,6 +16,16 @@ const App = () => {
       reminder: true,
     },
   ]);
+
+  //Add Task
+
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newTask = { id, ...task };
+    setTasks([...tasks, newTask]);
+    console.log(id);
+  };
+
   //Delete a Task:
   const deleteTask = (id) => {
     // We dont want to show the task deleted i.e setting the task to filtered task
@@ -32,6 +45,10 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      {
+        //Show the form when you click Add Task else hide it
+        showAddTask && <AddTask onAdd={addTask} />
+      }
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
