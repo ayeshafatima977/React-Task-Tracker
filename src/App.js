@@ -44,9 +44,9 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header />
+      <Header onAdd={() => setShowAddTask(!showAddTask)} />
       {
-        //Show the form when you click Add Task else hide it
+        //ShowAddtask is True then show the formelse hide it
         showAddTask && <AddTask onAdd={addTask} />
       }
       {tasks.length > 0 ? (
