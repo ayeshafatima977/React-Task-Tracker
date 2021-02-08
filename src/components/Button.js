@@ -18,7 +18,7 @@ const Button = ({ color, text, onClick }) => {
 Button.defaultProps = {
   color: "salmon",
 };
-//We can also use Prop types
+//We can also use Prop types to set the type of a property
 Button.propTypes = {
   text: PropTypes.string,
   color: PropTypes.string,
